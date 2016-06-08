@@ -11,8 +11,14 @@ import java.io.IOException;
 public abstract class ExceptionHandlingServlet extends GenericServlet {
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        safeService((HttpServletRequest) req, (HttpServletResponse) res);
+        try {
+            safeService((HttpServletRequest) req, (HttpServletResponse) res);
+        } catch (UnsupportedOperationException uoe) {}
     }
 
     public abstract void safeService(HttpServletRequest req, HttpServletResponse res) throws IOException;
+
+    protected void sendDown(Content content, ApplicationResponse response) throws IOException {
+        content.sendContent(response);
+    }
 }

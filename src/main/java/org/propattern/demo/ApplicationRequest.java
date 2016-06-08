@@ -3,9 +3,11 @@ package org.propattern.demo;
 import javax.servlet.http.HttpServletRequest;
 
 public class ApplicationRequest {
-    private HttpServletRequest req;
+    public static enum METHOD {GET}
 
-    public ApplicationRequest(HttpServletRequest req) {
-        this.req = req;
+    private HttpServletRequest request;
+
+    public ApplicationRequest(HttpServletRequest request) {
+        this.request = request;
     }
 }

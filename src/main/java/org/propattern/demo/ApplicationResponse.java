@@ -4,18 +4,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.OutputStream;
 
 public class ApplicationResponse {
-    private HttpServletResponse res;
+    private HttpServletResponse response;
 
-    public ApplicationResponse(HttpServletResponse res) {
-        this.res = res;
+    public ApplicationResponse(HttpServletResponse response) {
+        this.response = response;
     }
 
-    public void OK(Object object) throws IOException {
-        res.setContentType("application/json");
-        ((HttpServletResponse) res).setStatus(HttpServletResponse.SC_OK);
+    public void setStatusCode(int statusCode) {
+        this.response.setStatus(statusCode);
+    }
 
-        new ObjectMapper().writeValue(res.getOutputStream(), object);
+    public void type(String type) {
+        this.response.setContentType(type);
+    }
+
+    public OutputStream outputStream() throws IOException {
+        return this.response.getOutputStream();
     }
 }

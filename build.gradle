@@ -10,6 +10,7 @@ repositories {
 dependencies {
     compile group: 'com.fasterxml.jackson.core', name: "jackson-databind", version: "2.5.3"
     compile group: 'com.google.guava', name: "guava", version: "16.0"
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.13'
 
     compile group: 'org.apache.tomcat.embed', name: "tomcat-embed-core", version: "8.0.23"
     compile group: 'org.apache.tomcat.embed', name: "tomcat-embed-jasper", version: "8.0.23"
